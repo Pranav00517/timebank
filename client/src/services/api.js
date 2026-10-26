@@ -1,4 +1,4 @@
-const API_BASE = '/api';
+const API_BASE = import.meta.env.VITE_API_BASE || '/api';
 
 const getAuthHeaders = () => {
   const token = localStorage.getItem('timebank_token');

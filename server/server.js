@@ -50,7 +50,22 @@ app.use('/api/sessions', sessionRoutes);
 app.use('/api/credits', creditRoutes);
 app.use('/api/admin', adminRoutes);
 
-// 404 handler for unknown routes
+// Serve static frontend in production if client/dist exists
+const path = require('path');
+const fs = require('fs');
+const clientDistPath = path.join(__dirname, '../client/dist');
+
+if (fs.existsSync(clientDistPath)) {
+  app.use(express.static(clientDistPath));
+  app.get('*', (req, res, next) => {
+    if (req.originalUrl.startsWith('/api')) {
+      return next();
+    }
+    res.sendFile(path.join(clientDistPath, 'index.html'));
+  });
+}
+
+// 404 handler for unknown API routes
 app.use('*', (req, res) => {
   res.status(404).json({
     success: false,
