@@ -1,0 +1,23 @@
+{
+  "name": "timebank-learn",
+  "version": "1.0.0",
+  "description": "TimeBank Learn — Skill Exchange Platform (MERN Architecture)",
+  "scripts": {
+    "server": "npm.cmd run dev --prefix server",
+    "client": "npm.cmd run dev --prefix client",
+    "dev": "concurrently \"npm.cmd run dev --prefix server\" \"npm.cmd run dev --prefix client\"",
+    "seed": "npm.cmd run seed --prefix server",
+    "build": "npm.cmd run build --prefix client"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  },
+  "keywords": [
+    "timebank",
+    "mern",
+    "skill-exchange",
+    "time-credits"
+  ],
+  "author": "Pranav Krishna PB",
+  "license": "ISC"
+}
